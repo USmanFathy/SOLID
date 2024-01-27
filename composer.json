@@ -1,0 +1,10 @@
+{
+  "autoload": {
+    "psr-4": {
+      "SOLID\\" : "Principles/"
+    }
+  },
+  "require-dev": {
+    "phpunit/phpunit": "10.5.9"
+  }
+}
