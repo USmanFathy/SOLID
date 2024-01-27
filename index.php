@@ -51,3 +51,10 @@ require_once __dir__.DIRECTORY_SEPARATOR."vendor".DIRECTORY_SEPARATOR."autoload.
 //$violation->setSalary(500);
 //
 //echo $violationExample->calculateSalary($violation,16);
+
+use SOLID\LSP\EncryptSubType;
+
+$encrypt = new EncryptSubType();
+$encrypt->setString('usman');
+
+echo $encrypt->encrypt();
