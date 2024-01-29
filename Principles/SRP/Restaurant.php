@@ -5,9 +5,9 @@ namespace SOLID\SRP;
 class Restaurant
 {
     /**
-     * @var array
+     * @var Employee[]
      */
-    private $employees = [];
+    private $employees;
     /**
      * @var int
      */
@@ -28,19 +28,6 @@ class Restaurant
     /**
      * @return array
      */
-    public function getEmployees()
-    {
-        return $this->employees;
-    }
-
-    /**
-     * @param Employee $employee
-     * @return void
-     */
-    public function setEmployees(Employee $employee)
-    {
-        $this->employees[] = $employee;
-    }
 
     /**
      * @return int
@@ -56,6 +43,22 @@ class Restaurant
     public function setNumberOfTables($numberOfTables)
     {
         $this->numberOfTables = $numberOfTables;
+    }
+
+    public function getEmployees(): array
+    {
+        return $this->employees;
+    }
+
+    public function setEmployees(array  $employees): void
+    {
+            foreach ($employees as $employee) {
+        if (!($employee instanceof Employee)) {
+            throw new \InvalidArgumentException('All elements in the array must be of type Employee.');
+        }
+        }
+
+        $this->employees = $employees;
     }
 
 
