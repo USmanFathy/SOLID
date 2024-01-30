@@ -17,9 +17,9 @@ class Restaurant
      */
     private $owner;
     /**
-     * @var array
+     * @var Item[]
      */
-    private $menu = [];
+    private $menu ;
     public function __construct($owner)
     {
         $this->setOwner($owner);
@@ -58,7 +58,7 @@ class Restaurant
         }
         }
 
-        $this->employees = $employees;
+        $this->employees[]= $employees;
     }
 
 
@@ -89,12 +89,18 @@ class Restaurant
     }
 
     /**
-     * @param Item $item
+     * @param array
      * @return void
      */
-    public function setMenu(Item $item)
+    public function setMenu(array $item)
     {
-        $this->menu[] = $item;
+        foreach ($item as $i) {
+            if (!($i instanceof Item)) {
+                throw new \InvalidArgumentException('All elements in the array must be of type Employee.');
+            }
+        }
+
+        $this->menu[]= $item;
     }
 
 
