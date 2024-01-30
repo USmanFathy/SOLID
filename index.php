@@ -17,7 +17,7 @@ require_once __dir__.DIRECTORY_SEPARATOR."vendor".DIRECTORY_SEPARATOR."autoload.
  $restaurant = new Restaurant($owner);
  $restaurant->setNumberOftables(50);
  $restaurant->setemployees([$employee1,$employee2,$employee3]);
- $restaurant->setmenu([$item1,$item2,$item3]);
+ $restaurant->setmenu([$item1]);
  var_dump($restaurant);
 
 //ocp

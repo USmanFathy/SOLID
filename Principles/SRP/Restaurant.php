@@ -52,11 +52,7 @@ class Restaurant
 
     public function setEmployees(array  $employees): void
     {
-            foreach ($employees as $employee) {
-        if (!($employee instanceof Employee)) {
-            throw new \InvalidArgumentException('All elements in the array must be of type Employee.');
-        }
-        }
+        $this->checkInstance($employees,Employee::class);
 
         $this->employees[]= $employees;
     }
@@ -94,16 +90,19 @@ class Restaurant
      */
     public function setMenu(array $item)
     {
-        foreach ($item as $i) {
-            if (!($i instanceof Item)) {
-                throw new \InvalidArgumentException('All elements in the array must be of type Employee.');
-            }
-        }
+        $this->checkInstance($item,Item::class);
 
         $this->menu[]= $item;
     }
 
 
-
+private function checkInstance($array , $instance)
+{
+    foreach ($array as $i) {
+        if (!($i instanceof $instance)) {
+            throw new \InvalidArgumentException("All elements in the array must be of type {$instance}.");
+        }
+    }
+}
 
 }
